@@ -20,6 +20,30 @@ public class DashGameTest extends FluentTest {
   @Test
   public void replaceVowel_inputReturnsStringWithNoVowels_noVowels(){
     DashGame testDashGame = new DashGame();
-    assertEquals("ths wrks nw", testDashGame.replaceVowel("this works now"));
+    assertEquals("th-s w-rks n-w", testDashGame.replaceVowel("this works now"));
+  }
+
+  @Test
+  public void replaceVowel_inputIsCaseInsensitive_capitalizationCorrect() {
+    DashGame testDashGame = new DashGame();
+    assertEquals("W-W, th-s -v-n w-rks n-w", testDashGame.replaceVowel("WOW, thIs EvEn wOrks nOw"));
+  }
+
+  @Test
+  public void compareStrings_displaysMissedPossition_returnsCorrectPosition() {
+    DashGame testDashGame = new DashGame();
+    assertEquals("Your guess is correct up to letter t", testDashGame.compareStrings("Right answer", "Rights answer"));
+  }
+
+  @Test
+  public void compareStrings_displaysMissedLetter_returnsCorrectLetter() {
+    DashGame testDashGame = new DashGame();
+    assertEquals("Your guess is correct up to letter i", testDashGame.compareStrings("RiGht answer", "Right answer"));
+  }
+
+  @Test
+  public void compareStrings_dislaysWin_returnsWinMessage() {
+    DashGame testDashGame = new DashGame();
+    assertEquals("Congrats, you guessed it!", testDashGame.compareStrings("Right answer", "Right answer"));
   }
 }
