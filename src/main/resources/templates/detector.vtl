@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <h1>Game Result<h1>
+</div>
+#if($results == "Congrats, you guessed it!")
+<div class="appendResults">
+  $results
+</div>
+<form action="/" method="get">
+  <button type="submit" class="btn">New Game</button>
+</form>
+#else
+<div class="appendResults">
+  $results
+</div>
+<form action="/results" method="get">
+  <div class="hide-me">
+    <input name="userinput" value="$input">
+  </div>
+  <button type="submit" class="btn">Try again</button>
+</form>
+#end

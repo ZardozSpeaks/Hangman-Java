@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1>Take a Guess<h1>
+</div>
+<div class="appendResults">
+  $results
+</div>
+<form action="/detector" method="get">
+  <div class="form-group">
+    <input name="userguess">
+    <button class="btn" type="submit">Guess</button>
+  </div>
+  <div class="hide-me">
+    <input name="userinput" value="$input">
+  </div>
+</form>
