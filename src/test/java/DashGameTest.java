@@ -18,6 +18,21 @@ public class DashGameTest extends FluentTest {
   public static ServerRule server = new ServerRule();
 
   @Test
+  public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("No Consequences Hangman");
+  }
+
+  @Test
+  public void dashGame() {
+
+    goTo("http://localhost:4567/");
+    fill("#userinput").with("Hello World.");
+    submit(".btn");
+    assertThat(pageSource()).contains("H-ll- W-rld.");
+  }
+
+  @Test
   public void replaceVowel_inputReturnsStringWithNoVowels_noVowels(){
     DashGame testDashGame = new DashGame();
     assertEquals("th-s w-rks n-w", testDashGame.replaceVowel("this works now"));
@@ -32,13 +47,13 @@ public class DashGameTest extends FluentTest {
   @Test
   public void compareStrings_displaysMissedPossition_returnsCorrectPosition() {
     DashGame testDashGame = new DashGame();
-    assertEquals("Your guess is correct up to letter t", testDashGame.compareStrings("Right answer", "Rights answer"));
+    assertEquals("Your guess is correct up to letter \" t \" ", testDashGame.compareStrings("Right answer", "Rights answer"));
   }
 
   @Test
   public void compareStrings_displaysMissedLetter_returnsCorrectLetter() {
     DashGame testDashGame = new DashGame();
-    assertEquals("Your guess is correct up to letter i", testDashGame.compareStrings("RiGht answer", "Right answer"));
+    assertEquals("Your guess is correct up to letter \" i \" ", testDashGame.compareStrings("RiGht answer", "Right answer"));
   }
 
   @Test
